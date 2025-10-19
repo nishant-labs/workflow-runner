@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
+import process from 'node:process';
 
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(process.cwd(), 'src/index.ts'),
       fileName: 'index',
       formats: ['cjs'],
     },

@@ -1,12 +1,13 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import prettier from 'eslint-config-prettier';
+import prettierEslint from 'eslint-config-prettier/flat';
 
 export default tseslint.config(
   {
     ignores: ['dist/**', 'bin/**'],
   },
   {
+    files: ['src/**/*.ts'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -21,15 +22,19 @@ export default tseslint.config(
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
-  },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
+    extends: [eslint.configs.recommended, ...tseslint.configs.recommended, prettierEslint],
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'warn',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-  prettier
+  {
+    files: ['*.js', '*.cjs', '*.mjs', '*.ts', 'vite.config.ts'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+    extends: [eslint.configs.recommended, prettierEslint],
+  }
 );
