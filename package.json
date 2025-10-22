@@ -1,60 +1,57 @@
 {
-  "name": "@nishant-labs/run-it",
-  "version": "0.1.0",
-  "description": "A feature-rich CLI tool built with CommanderJS",
-  "type": "commonjs",
-  "main": "dist/index.js",
-  "bin": {
-    "runit": "./bin/index.js"
-  },
-  "scripts": {
-    "start": "node dist/index.js",
-    "build": "vite build",
-    "test": "echo \"Warning: no test specified\" && exit 0",
-    "lint": "eslint . --fix",
-    "lint:check": "eslint .",
-    "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "prepare": "husky"
-  },
-  "keywords": [
-    "cli",
-    "commander",
-    "typescript"
-  ],
-  "author": "nishant-labs",
-  "license": "MIT",
-  "dependencies": {
-    "@inquirer/prompts": "7.9.0",
-    "chalk": "5.6.2",
-    "cli-table3": "0.6.5",
-    "commander": "14.0.1",
-    "ora": "9.0.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "9.38.0",
-    "@types/node": "20.19.22",
-    "eslint": "9.38.0",
-    "eslint-config-prettier": "10.1.8",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.4",
-    "prettier": "3.6.2",
-    "pretty-quick": "^4.2.2",
-    "typescript": "5.9.3",
-    "typescript-eslint": "8.46.1",
-    "vite": "7.1.10"
-  },
-  "lint-staged": {
-    "*": [
-      "npm run lint",
-      "pretty-quick --staged"
-    ]
-  },
-  "engines": {
-    "node": ">=20.0.0"
-  },
-  "files": [
-    "bin",
-    "dist"
-  ]
+	"name": "workflow-runner",
+	"description": "A CLI tool to run and monitor workflows from the terminal",
+	"version": "0.0.0",
+	"license": "MIT",
+	"author": "nishant-labs",
+	"bin": {
+		"workflow-runner": "dist/cli.js",
+		"wfr": "dist/cli.js"
+	},
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"start": "node dist/cli.js",
+		"build": "rm -rf dist && node esbuild.config.js",
+		"dev": "tsc --watch",
+		"lint": "xo --fix",
+		"lint:check": "xo",
+		"format": "prettier . --write",
+		"format:check": "prettier . --check",
+		"test": "vitest",
+		"prepare": "husky"
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"ink": "^6.3.1",
+		"pastel": "^4.0.0",
+		"react": "^19.2.0",
+		"zod": "^4.1.12"
+	},
+	"devDependencies": {
+		"@sindresorhus/tsconfig": "^8.0.1",
+		"@types/react": "^19.2.2",
+		"@vdemedes/prettier-config": "^2.0.1",
+		"chalk": "^5.6.2",
+		"esbuild": "0.25.11",
+		"glob": "^11.0.3",
+		"husky": "^9.1.7",
+		"ink-testing-library": "^4.0.0",
+		"lint-staged": "^16.2.6",
+		"prettier": "^3.6.2",
+		"pretty-quick": "^4.2.2",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.1",
+		"xo": "^1.2.3"
+	},
+	"lint-staged": {
+		"*": [
+			"npm run lint",
+			"pretty-quick --staged"
+		]
+	}
 }
