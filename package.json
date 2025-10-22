@@ -14,13 +14,13 @@
 	},
 	"scripts": {
 		"start": "node dist/cli.js",
-		"build": "tsc",
+		"build": "rm -rf dist && node esbuild.config.js",
 		"dev": "tsc --watch",
 		"lint": "xo --fix",
 		"lint:check": "xo",
 		"format": "prettier . --write",
 		"format:check": "prettier . --check",
-		"test": "ava",
+		"test": "vitest",
 		"prepare": "husky"
 	},
 	"files": [
@@ -33,37 +33,20 @@
 		"zod": "^4.1.12"
 	},
 	"devDependencies": {
-		"@ava/typescript": "^6.0.0",
 		"@sindresorhus/tsconfig": "^8.0.1",
 		"@types/react": "^19.2.2",
 		"@vdemedes/prettier-config": "^2.0.1",
-		"ava": "^6.4.1",
 		"chalk": "^5.6.2",
-		"eslint-config-xo": "^0.49.0",
-		"eslint-config-xo-react": "^0.28.0",
-		"eslint-plugin-ava": "^15.1.0",
-		"eslint-plugin-react": "^7.37.5",
-		"eslint-plugin-react-hooks": "^7.0.0",
+		"esbuild": "0.25.11",
+		"glob": "^11.0.3",
 		"husky": "^9.1.7",
 		"ink-testing-library": "^4.0.0",
 		"lint-staged": "^16.2.6",
 		"prettier": "^3.6.2",
 		"pretty-quick": "^4.2.2",
-		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3",
+		"vitest": "^4.0.1",
 		"xo": "^1.2.3"
-	},
-	"ava": {
-		"typescript": {
-			"compile": "tsc",
-			"rewritePaths": {
-				"src/": "build/"
-			},
-			"extensions": [
-				"ts",
-				"tsx"
-			]
-		}
 	},
 	"lint-staged": {
 		"*": [

@@ -1,9 +1,11 @@
 {
 	"extends": "@sindresorhus/tsconfig",
 	"compilerOptions": {
-		"moduleResolution": "nodenext",
-		"module": "node20",
-		"outDir": "dist"
+		"moduleResolution": "bundler",
+		"module": "esnext",
+		"outDir": "dist",
+		"allowImportingTsExtensions": true,
+		"noEmit": true
 	},
-	"include": ["source"]
+	"include": ["src"]
 }
